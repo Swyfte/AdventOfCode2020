@@ -1,3 +1,5 @@
 import os
-
-with open (("input.txt", mode=""))
+linelist[] = []
+with open("input.txt") as f:
+    for line in f:
+        linelist.append(int(line))
