@@ -7,7 +7,8 @@ import re
 
 charMatch = re.compile('[a-z]|[A-Z]')
 
-linelist = []
+validPasswords = 0
+invalidPasswords = 0
 with open("passwords.txt") as f:
     for line in f:
         minimum = 0
@@ -38,7 +39,13 @@ with open("passwords.txt") as f:
             
             elif (isPassword):
                 password += char
-        print(minimum)
-        print(maximum)
-        print(charactermatch)
-        print(password)
+
+        count = 0
+        for x in password:
+            if x == charactermatch:
+                count += 1
+        if (count <= maximum) & (count >= minimum):
+            validPasswords += 1
+        else:
+            invalidPasswords += 1
+print(validPasswords)
