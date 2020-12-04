@@ -1,8 +1,3 @@
-"Split line into before and after colon"
-"Create RegEx from first half"
-"Apply RegEx to second half"
-"If valid, incriment counter."
-
 import re
 
 charMatch = re.compile('[a-z]|[A-Z]')
@@ -37,15 +32,22 @@ with open("passwords.txt") as f:
             elif (char == ' ') & (charactermatch != ''):
                 isPassword = True
             
-            elif (isPassword):
+            elif (isPassword) & (char != '\n'):
                 password += char
 
-        count = 0
+        """count = 0
         for x in password:
             if x == charactermatch:
                 count += 1
         if (count <= maximum) & (count >= minimum):
             validPasswords += 1
         else:
+            invalidPasswords += 1"""
+        if (len(password) <= maximum):
+            if (password[minimum-1] == charactermatch) ^ (password[maximum-1] == charactermatch):
+                validPasswords += 1
+        else:
             invalidPasswords += 1
+
+            "This code does not work, it produces the wrong answer"
 print(validPasswords)
