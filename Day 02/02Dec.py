@@ -43,9 +43,13 @@ with open("passwords.txt") as f:
             validPasswords += 1
         else:
             invalidPasswords += 1"""
-        if (len(password) <= maximum):
-            if (password[minimum-1] == charactermatch) ^ (password[maximum-1] == charactermatch):
+        if (len(password) >= maximum):
+            if (password[minimum-1] == charactermatch) & (password[maximum-1] != charactermatch):
                 validPasswords += 1
+            elif (password[minimum-1] != charactermatch) & (password[maximum-1] == charactermatch):
+                validPasswords += 1
+            else:
+                invalidPasswords += 1
         else:
             invalidPasswords += 1
 
